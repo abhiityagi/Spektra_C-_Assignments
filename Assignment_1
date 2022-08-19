@@ -1,0 +1,175 @@
+// 1. Write a C# Sharp program that takes three letters as input and display them in reverse order.
+
+using System;
+namespace reverseLogic
+{
+    class reverseOrder
+    {
+        static void Main(string[] args)
+        {
+            char word_1, word_2, word_3;
+
+            Console.Write("Enter letter: ");
+            word_1 = Convert.ToChar(Console.ReadLine());
+
+            Console.Write("Enter letter: ");
+            word_2 = Convert.ToChar(Console.ReadLine());
+
+            Console.Write("Enter letter: ");
+            word_3 = Convert.ToChar(Console.ReadLine());
+
+            Console.WriteLine("\n=====Expected Output=====\n");
+            Console.WriteLine("{0} {1} {2}", word_3, word_2, word_1);
+
+            Console.ReadKey();
+        }
+        
+    }
+    
+}
+
+// 2. Write a C# Sharp program that takes a number and a width also a number, as input and then displays a triangle of that width, using that number.
+
+using System;
+namespace Pattern
+{
+    class trianglePattern
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter a number: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the desired width: ");
+            int width = Convert.ToInt32(Console.ReadLine());
+
+            int row = number, col = width;
+
+            Console.WriteLine("\n=====Expected Output=====\n");
+
+            for (int i = 1; i <= row; i++)
+            {
+                for (int k = col; k >= i; k--)
+                {
+                    Console.Write(col);
+                }
+                Console.Write("\n");
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+// 4. Write a C# Sharp program that takes two numbers as input and perform an operation (+,-,*,x,/) on them and displays the result of that operation.
+
+using System;
+namespace Calculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string value;
+            do
+            {
+                int res;
+                Console.Write("Enter First Number: ");
+                int num1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter Operation (+,-,*,x,/): ");
+                string symbol = Console.ReadLine();
+
+                Console.Write("Enter Second Number: ");
+                int num2 = Convert.ToInt32(Console.ReadLine());
+                switch (symbol)
+                {
+                    case "+":
+                        res = num1 + num2;
+                        Console.WriteLine("\n{0} + {1} = {2}", num1, num2, res);
+                        break;
+                    case "-":
+                        res = num1 - num2;
+                        Console.WriteLine("\n{0} - {1} = {2}", num1, num2, res);
+                        break;
+                    case "*":
+                        res = num1 * num2;
+                        Console.WriteLine("\n{0} * {1} = {2}", num1, num2, res);
+                        break;
+                    case "x":
+                        res = num1 * num2;
+                        Console.WriteLine("\n{0} x {1} = {2}", num1, num2, res);
+                        break;
+                    case "/":
+                        res = num1 / num2;
+                        Console.WriteLine("\n{0} / {1} = {2}", num1, num2, res);
+                        break;
+                    default:
+                        Console.WriteLine("\nWrong Input");
+                        break;
+                }
+                Console.ReadLine();
+                Console.Write("Do You Want To Continue(Press y For Yes and Press n for No)");
+                value = Console.ReadLine();
+            }
+            while (value == "y" || value == "Y");
+        }
+    }
+}
+
+// 5. Write a C# Sharp program that takes the radius of a circle as input and calculate the perimeter and area of the circle.
+
+using System;
+namespace perimeterArea
+{
+    class circlePA
+    {
+        static void Main(string[] args)
+        {
+            double radius;
+            double PI = 3.14;
+
+            Console.WriteLine("Input the radius of the circle : ");
+            radius = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("\nPerimeter of Circle : " + ((radius * 2) * PI));
+            Console.WriteLine("\nArea of Circle : " + ((radius * radius) * PI));
+            Console.ReadKey();
+        }
+    }
+}
+
+// 6. Write a C# Sharp program that takes distance and time as input and displays the speed in kilometres per hour and miles per hour.
+
+using System;
+
+namespace Conversion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            float distance, timesec, kph, mps, mph, hour, sec, min;
+            Console.Write("Input distance(metres): ");
+            distance = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Input timeSec(hour): ");
+            hour = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Input timeSec(minutes): ");
+            min = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Input timeSec(seconds): ");
+            sec = Convert.ToInt32(Console.ReadLine());
+
+            timesec = (hour * 3600) + (min * 60) + sec;
+            mps = distance / timesec;
+            kph = (distance / 1000.0f) / (timesec / 3600.0f);
+            mph = kph / 1.60934f;
+
+            Console.WriteLine("\nYour speed in metres/sec is {0}", mps);
+            Console.WriteLine("\nYour speed in km/h is {0}", kph);
+            Console.WriteLine("\nYour speed in miles/h is {0}", mph);
+            Console.ReadKey();
+        }
+    }
+}
