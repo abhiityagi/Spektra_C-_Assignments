@@ -252,3 +252,61 @@ namespace Conversion
         
     }
 }
+
+// 10. Write a C# Sharp program to get the absolute difference between n and 51. If n is greater than 51 return triple the absolute difference.
+
+using System;
+
+namespace AbsoluteDiff
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a number: \n");
+            int n1 = int.Parse(Console.ReadLine());
+            int n2 = int.Parse(Console.ReadLine());
+            int n3 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\n=====Expected Result=====\n");
+
+            Console.WriteLine(AbsDif(n1));
+            Console.WriteLine(AbsDif(n2));
+            Console.WriteLine(AbsDif(n3));
+            Console.ReadKey();
+        }
+        public static int AbsDif(int n)
+        {
+            if (n > 51)
+            {
+                return (Math.Abs((n - 51) * 3));
+            }
+            return (Math.Abs(n - 51));
+        }
+    }
+}
+
+// 11. Write a C# Sharp program to remove the character in a given position of a given string. The given position will be in the range 0.. string length -1 inclusive.
+
+using System;
+
+namespace removePosition
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter your string: \n");
+            string str = Console.ReadLine();
+            Console.WriteLine("\nEnter the position which you want to remove: ");
+
+            for (int i = 0; i < 3; i++)
+            {
+                //Console.WriteLine("\n");
+                int pos = int.Parse(Console.ReadLine());
+                Console.WriteLine(str.Remove(pos, 1));
+                Console.WriteLine("\n");
+            }
+        }    
+    }
+}
