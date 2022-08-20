@@ -173,3 +173,82 @@ namespace Conversion
         }
     }
 }
+
+// 7. Write a C# Sharp program that takes a character as input and check the input (lowercase) is a vowel, a digit, or any other symbol.
+
+using System;
+
+namespace characterLogic
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char character;
+
+            Console.Write("Input a symbol: ");
+            character = Convert.ToChar(Console.ReadLine());
+
+            if ((character == 'a') || (character == 'e') || (character == 'i') || (character == 'o') || (character == 'u'))
+                Console.WriteLine("\nIt's a lowercase vowel.");
+            else if ((character >= '0') && (character <= '9'))
+                Console.WriteLine("\nIt's a digit.");
+            else
+                Console.Write("\nIt's any other symbol.");
+            Console.ReadKey();
+        }
+    }
+}
+
+// 8. Write a C# Sharp program that takes two numbers as input and returns true or false when both numbers are even or odd.
+
+using System;
+
+namespace EvenOdd
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter First number: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("\nEnter Second number: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\n====Result=====\n");
+            Console.WriteLine(a % 2 == 0 && b % 2 == 0 || a % 2 != 0 && b % 2 != 0);
+            Console.ReadKey();
+        }
+    }
+}
+
+// 9. Write a C# Sharp program that takes a decimal number as input and displays its equivalent in binary form.
+
+using System;
+
+namespace Conversion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n, i;
+            int[] a = new int[10];
+            Console.Write("Enter the decimal number to convert: ");
+            n = Convert.ToInt32(Console.ReadLine());
+            for (i = 0; n > 0; i++)
+            {
+                a[i] = n % 2;
+                n = n / 2;
+            }
+            Console.Write("\nBinary of the given number = ");
+            for (i = i - 1; i >= 0; i--)
+            {
+                Console.Write(a[i]);
+            }
+            Console.ReadKey();
+        }
+        
+    }
+}
