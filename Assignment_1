@@ -298,15 +298,15 @@ namespace removePosition
         {
             Console.WriteLine("Enter your string: \n");
             string str = Console.ReadLine();
-            Console.WriteLine("\nEnter the position which you want to remove: ");
+            Console.WriteLine("\nEnter the position which you want to remove: \n");
 
             for (int i = 0; i < 3; i++)
             {
-                //Console.WriteLine("\n");
                 int pos = int.Parse(Console.ReadLine());
                 Console.WriteLine(str.Remove(pos, 1));
                 Console.WriteLine("\n");
             }
-        }    
+            Console.ReadKey();
+        }
     }
 }
