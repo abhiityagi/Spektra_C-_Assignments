@@ -60,6 +60,55 @@ namespace Pattern
     }
 }
 
+// 3.Write a C# Sharp program that takes userid and password as input (type string). 
+After 3 wrong attempts, user will be rejected.(Store user data in hashtable/Dictionary).
+
+using System;
+using System.Collections;
+
+namespace HashtableOperation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int counter = 3;
+            var credentials = new Hashtable(){
+                {"Username", "ankitGupta"},
+                {"Password", "ankii@1997"}
+            };
+
+            do
+            {
+                Console.Write("Enter Username : ");
+                string username = Console.ReadLine();
+
+                Console.Write("Enter Password : ");
+                string password = Console.ReadLine();
+
+                if (username != (string)credentials["Username"] || password != (string)credentials["Password"])
+                {
+                    Console.WriteLine("wrong credentials");
+                    counter--;
+                    Console.WriteLine($"You have only {counter} attempts available..");
+                    Console.WriteLine("\n==================================\n");
+                }
+                else
+                {
+                    Console.WriteLine("Login Successfully");
+                    break;
+                }
+            } while (counter > 0);
+
+            if (counter == 0)
+            {
+                Console.WriteLine("Your account has been locked contact admin");
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
 // 4. Write a C# Sharp program that takes two numbers as input and perform an operation (+,-,*,x,/) on them and displays the result of that operation.
 
 using System;
