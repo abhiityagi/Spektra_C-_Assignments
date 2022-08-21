@@ -131,3 +131,81 @@ namespace SmallestPositive
         }
     }
 }
+
+// 4. Given six digits, find the earliest valid time that can be displayed on a digital clock (in 24-hour format) using those digits.
+For example, given digits 1, 8, 3, 2, 6, 4 the earliest valid time is "12:36:48". Note that "12 : 34 : 68" is not a valid time.
+
+using System;
+
+namespace DigitalClock
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter 6 single digits for digital clock: ");
+            Console.Write("Digit 1 : ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Digit 2 : ");
+            int b = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Digit 3 : ");
+            int c = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Digit 4 : ");
+            int d = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Digit 5 : ");
+            int e = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Digit 6 : ");
+            int f = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine(Solution(a, b, c, d, e, f));
+            Console.ReadKey();
+        }
+
+        public static string Solution(int A, int B, int C, int D, int E, int F)
+        {
+            int[] ClockDigits = { A, B, C, D, E, F };
+            Array.Sort(ClockDigits);
+            string ClockTime = "";
+            if (ClockDigits[0] > 2 && ClockDigits[1] > 4)
+                return "Not Possible";
+            if (ClockDigits[2] > 5 && ClockDigits[3] > 9)
+                return "Not Possible";
+            if (ClockDigits[4] > 5 && ClockDigits[5] > 9)
+                return "Not Possible";
+            else
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    ClockTime += ClockDigits[i].ToString();
+                    if (i == 1 || i == 3)
+                        ClockTime += ":";
+                }
+                return $"Minimum time for the clock is : {ClockTime}";
+            }
+        }
+    }
+}
+
+// 5. Reverse the ordering of words in a String
+I have this string s1 = "My name is X Y Z"
+and I want to reverse the s1 = "Z Y X is name My" 
+
+using System;
+class myProgram
+{
+    static void Main()
+    {
+        Console.WriteLine(StringReversing.ReverseString("ym eman si X Y Z"));
+        Console.ReadKey();
+    }
+}
+
+static class StringReversing
+{
+    public static string ReverseString(string myStr)
+    {
+        char[] myArr = myStr.ToCharArray();
+        Array.Reverse(myArr);
+        return new string(myArr);
+    }
+}
