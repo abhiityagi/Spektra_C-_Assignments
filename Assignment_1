@@ -506,5 +506,96 @@ namespace RomanNumerals
 
 // 17. Write a program in C# Sharp to find the sum of first n natural numbers using recursion
 
+using System;
 
+namespace RecursionSum
+{
+    class naturalNumbers
+    {
+        static void Main(string[] args)
+        {
+            Console.Write(" How many numbers to sum : ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("\n The sum of first {0} natural numbers is : {1}\n\n", n, recurSum(n));
+            Console.ReadKey();
+        }
 
+        public static int recurSum(int n)
+        {
+            if (n <= 1)
+            {
+                return n;
+            }
+            return n + recurSum(n - 1);
+        }
+    }
+}
+
+// 18. Write a program in C# Sharp to display the individual digits of a given number using recursion
+
+using System;
+class RecursionDigits
+{
+    static void Main()
+    {
+
+        Console.Write("\n\n Display the individual digits of a given number :\n");
+        Console.Write("==============================================================\n");
+        Console.Write(" Input any number : ");
+        int num = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write(" The digits in the number {0} are : ", num);
+        digiRecursion(num);
+        Console.Write("\n\n");
+        Console.ReadKey();
+    }
+
+    static void digiRecursion(int number)
+    {
+        if (number == 0)
+        {
+            return;
+        }
+        else
+        {
+            digiRecursion(number / 10);
+            Console.Write(" {0} ", number % 10);
+        }
+    }
+}
+
+// 19. Write a program in C# Sharp to find the number of an array and the square of each number using LINQ.
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace SquareClass
+{
+    class findSquare
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter numbers which has greater square than 20:- \n");
+            int[] array1 = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                array1[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("\n");
+
+            Console.Write(" Number of an array and the square of each number using LINQ : ");
+            Console.Write("\n====================================================================\n");
+
+            var sqNo = from int Number in array1
+                       let SqrNo = Number * Number
+                       where SqrNo > 20
+                       select new { Number, SqrNo };
+
+            foreach (var a in sqNo)
+                Console.WriteLine(a);
+
+            Console.ReadKey();
+        }
+    }
+}
