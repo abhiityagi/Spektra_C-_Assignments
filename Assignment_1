@@ -599,3 +599,126 @@ namespace SquareClass
         }
     }
 }
+
+// 20. Write a program in C# Sharp to display the characters and frequency of character from giving string using LINQ.
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace StringLinq
+{
+    class CountCharacter
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("\nDisplay the characters and frequency of character from giving string : ");
+            Console.Write("\n<===========================================================================>\n");
+            Console.Write("Enter the string : ");
+            string strChar = Console.ReadLine();
+            Console.Write("\n");
+
+            var freQuency = from x in strChar
+                       group x by x into y
+                       select y;
+
+            Console.Write("The frequency of the characters are :\n\n");
+            foreach (var TotChar in freQuency)
+            {
+                Console.WriteLine("Character " + TotChar.Key + ": " + TotChar.Count() + " times");
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+// 21. Write a program in C# Sharp to find the string which starts and ends with a specific character using LINQ
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace CityLinq
+{
+    class cityByChar
+    {
+        static void Main(string[] args)
+        {
+            string StartChar, EndChar;
+            char ch;
+            string[] cities =
+            {
+                "ROME","LONDON","NAIROBI","CALIFORNIA","ZURICH","NEW DELHI","AMSTERDAM","ABU DHABI", "PARIS"
+            };
+
+            Console.Write("\nFind the string which starts and ends with a specific character : ");
+            Console.Write("\n=======================================================================\n");
+            Console.Write("\nThe cities are : 'ROME','LONDON','NAIROBI','CALIFORNIA','ZURICH','NEW DELHI','AMSTERDAM','ABU DHABI','PARIS' \n");
+
+            Console.Write("\nInput starting character for the string : ");
+            ch = Console.ReadLine()[0];
+            StartChar = ch.ToString();
+            Console.Write("\nInput ending character for the string : ");
+            ch = Console.ReadLine()[0];
+            EndChar = ch.ToString();
+
+            var result = from x in cities
+                          where x.StartsWith(StartChar)
+                          where x.EndsWith(EndChar)
+                          select x;
+            Console.Write("\n\n");
+
+            foreach (var city in result)
+            {
+                Console.Write("The city starting with {0} and ending with {1} is : {2} \n", StartChar, EndChar, city);
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+// 22. Write a program in C# Sharp to display the top n-th records using LINQ.
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace RecordsLinq
+{
+    class DisplayRecords
+    {
+        static void Main(string[] args)
+        {
+            List<int> members = new List<int>();
+            members.Add(5);
+            members.Add(7);
+            members.Add(13);
+            members.Add(24);
+            members.Add(6);
+            members.Add(9);
+            members.Add(8);
+            members.Add(7);
+
+            Console.Write("\nDisplay top nth  records from the list : ");
+            Console.Write("\n=============================================\n");
+
+            Console.WriteLine("\nThe members of the list are : ");
+            foreach (var numberlist in members)
+            {
+                Console.WriteLine(numberlist + " ");
+            }
+
+            Console.Write("\nHow many records you want to display ? : ");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            var max = (from t in members orderby t descending select t).Take(3);
+
+            Console.Write("\nThe top {0} records from the list are : \n", n);
+            foreach (int nth_top in max)
+            {
+                Console.WriteLine(nth_top);
+            }
+            Console.ReadKey();
+        }
+    }
+}
