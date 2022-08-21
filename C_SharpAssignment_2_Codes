@@ -1,1 +1,86 @@
+// 1. Write the C# code to display “<n> minute(s) ago" if difference between both dates is less than an hour and “<n> hour(s) ago" 
+if the difference is less than a day and “<n> day(s) ago" if the difference is less than a month and the date if the difference is more than a month.
 
+using System;
+
+namespace DatesDifferences
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            DateTime currentDate = DateTime.Now;
+
+            Console.Write("Enter Date (dd-mm-yyyy hh:mm:ss) : ");
+            DateTime oldDate = DateTime.Parse(Console.ReadLine());
+
+            Console.WriteLine("\n\n" + getTimeStamp(currentDate, oldDate));
+
+            Console.ReadKey();
+        }
+
+        public static string getTimeStamp(DateTime currentDate, DateTime updateDate)
+        {
+            int YearDiff = currentDate.Year - updateDate.Year;
+            int MonthDiff = currentDate.Month - updateDate.Month;
+            int DayDiff = currentDate.Day - updateDate.Day;
+            int HourDiff = currentDate.Hour - updateDate.Hour;
+            int MinuteDiff = currentDate.Minute - updateDate.Minute;
+            int SecondDiff = currentDate.Second - updateDate.Second;
+
+            if (YearDiff > 1)
+                return $"File was updated {YearDiff} years ago";
+            else if (MonthDiff > 1)
+                return $"File was updated {MonthDiff} Months ago";
+            else if (DayDiff > 1)
+                return $"File was updated {DayDiff} Days ago";
+            else if (HourDiff > 1)
+                return $"File was updated {HourDiff} Hours ago";
+            else if (MinuteDiff > 1)
+                return $"File was updated {MinuteDiff} Minutes ago";
+            else
+                return $"File was updated {SecondDiff} Seconds ago";
+        }
+    }
+}
+
+// 2. Write a program in C# Sharp to create and read last n number of lines of a file. Go to the editor.
+
+using System;
+using System.IO;
+using System.Linq;
+
+namespace WritingText
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("How many lines you want to enter");
+            int TotLines = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter some text lines to enter in text file: \n");
+            string[] writeText = new string[TotLines];
+
+            for (int i = 0; i < writeText.Length; i++)
+            {
+                Console.Write($"Line {i + 1} : ");
+                writeText[i] = Console.ReadLine();
+            }
+
+            File.WriteAllLines(@"\\tsclient\C\Testing\practice.txt", writeText);
+            Console.WriteLine("Text written in the file successfully...\n\n");
+
+            Console.WriteLine("How many files you want to disply: ");
+            int getLines = Convert.ToInt32(Console.ReadLine());
+
+            string[] GetText = File.ReadAllLines(@"\\tsclient\C\Testing\practice.txt");
+
+            Console.WriteLine("Here are the selected lines : \n");
+            foreach (string text in GetText.TakeLast(getLines))
+                Console.WriteLine(text);
+
+            Console.ReadKey();
+        }
+    }
+}
