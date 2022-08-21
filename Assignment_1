@@ -421,3 +421,23 @@ namespace stringsArray
         }
     }
 }
+
+// 15. Write a C# Sharp program to calculate the value that results from raising 3 to a power ranging from 0 to 32
+
+using System;
+
+namespace PowerRanging
+{
+    class PowerOperation
+    {
+        static void Main(string[] args)
+        {
+            int digit = 3;
+            for (int power = 0; power <= 32; power++)
+            {
+                Console.WriteLine($"{digit}^{power} = {(long)Math.Pow(digit, power):N0} (0x{(long)Math.Pow(digit, power):X})");
+            }
+            Console.ReadKey();
+        }
+    }
+}
