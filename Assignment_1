@@ -310,3 +310,114 @@ namespace removePosition
         }
     }
 }
+
+// 12. Write a C# Sharp program to exchange the first and last characters in a given string and return the new string.
+
+using System;
+namespace ExchangeCharacters
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter a string:- \n");
+            string letter1 = Console.ReadLine();
+            string letter2 = Console.ReadLine();
+            string letter3 = Console.ReadLine();
+
+            Console.WriteLine("\n======New String Result======\n");
+
+            Console.WriteLine(ExcChar(letter1));
+            Console.WriteLine(ExcChar(letter2));
+            Console.WriteLine(ExcChar(letter3));
+            Console.ReadLine();
+        }
+
+        public static string ExcChar(string str)
+        {
+            return str.Length > 1
+                ? str.Substring(str.Length - 1) + str.Substring(1, str.Length - 2) + str.Substring(0, 1) : str;
+        }
+    }
+}
+
+// 13. Write a C# Sharp program to create a new array from two give array of integers, each length 3
+using System;
+
+namespace ArrayOperations
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter elements of 1'st array:- ");
+            int[] arr1 = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                arr1[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("\n");
+
+            Console.WriteLine("enter elements of 2'nd array:- ");
+            int[] arr2 = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                arr2[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("\n");
+
+            int[] newArray = ComArr(arr1, arr2);
+
+            Console.Write("====new array====\n");
+            foreach (var i in newArray)
+            {
+                Console.Write(i.ToString() + " ");
+            }
+            Console.ReadKey();
+        }
+
+        public static int[] ComArr(int [] nums1, int [] nums2)
+        {
+            return new int[] { nums1[0], nums1[1], nums1[2], nums2[0], nums2[1], nums2[2] };
+        }
+    }
+}
+
+// 14. Write a C# Sharp program to count the number of strings with given length in given array of strings
+
+using System;
+
+namespace stringsArray
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Number of Strings: \n");
+            string[] answer = new string[5];
+            for (int i = 0; i < 5; i++)
+            {
+                answer[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine("\nenter length: \n");
+            int length = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\n===Number of Strings====\n");
+            Console.WriteLine(countStr(answer, length));
+        }
+        static int countStr(string[] arr_str, int len)
+        {
+            int ctr = 0;
+
+            for (int i = 0; i < arr_str.Length; i++)
+            {
+                if (arr_str[i].Length == len)
+                {
+                    ctr++;
+                } 
+            }
+            return ctr;
+        }
+    }
+}
