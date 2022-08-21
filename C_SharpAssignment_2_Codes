@@ -84,3 +84,50 @@ namespace WritingText
         }
     }
 }
+
+// 3. Write a function that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5
+
+using System;
+
+namespace SmallestPositive
+{
+    class Program
+    {
+        public static int solution(int[] A)
+        {
+            int n = 1;
+            Array.Sort(A);
+            for (int i = 1; i <= 100000; i++)
+            {
+                for (int i2 = 0; i2 <= A.Length - 1; i2++)
+                {
+                    if (A[i2] == i)
+
+                    {
+                        n = A[i2] + 1;
+                        break;
+                    }
+                }
+            }
+            return n;
+        }
+        static void Main(string[] args)
+        {
+            int[] IntArr1 = { 1, 2, 3};
+            foreach (int i in IntArr1)
+                Console.Write(i + ", ");
+
+            Console.WriteLine("\n\nSmallest positive integer : " + solution(IntArr1));
+            Console.WriteLine("\n========================\n");
+
+            int[] IntArr2 = { -1, -3 };
+            foreach (int j in IntArr2)
+                Console.Write(j + ", ");
+
+            Console.WriteLine("\n\nSmallest positive integer : " + solution(IntArr2));
+
+            Console.ReadKey();
+        }
+    }
+}
