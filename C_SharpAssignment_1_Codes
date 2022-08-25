@@ -51,7 +51,7 @@ namespace Pattern
             {
                 for (int k = col; k >= i; k--)
                 {
-                    Console.Write(col);
+                    Console.Write(row);
                 }
                 Console.Write("\n");
             }
