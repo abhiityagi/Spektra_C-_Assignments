@@ -70,7 +70,7 @@ create table Customer (
 	C_NAME VARCHAR(50)
 );
 
-###################### List of Queries with Questions ##########################
+###################### List of 20 Queries with Questions ##########################
 
 // 1. Print the names of the employees who have highest no of  leaves.
 
