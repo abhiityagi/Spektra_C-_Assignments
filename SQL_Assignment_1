@@ -1,3 +1,77 @@
+****************************** List Of Total 8 Tables and their Rows *********************************
+
+// 1. Employee Table
+create table Employee (
+	ID INT,
+	NAME VARCHAR(50),
+	LEAVES INT,
+	SALARY INT,
+	DEPARTMENT_ID INT,
+	TIMESHIFT INT,
+	STARTDATE DATE,
+	ENDDATE DATE,
+	SHIFTS VARCHAR(50) ,
+	COUNTRYREGION VARCHAR(50)
+);
+
+// 2. Department Table
+create table Department (
+	DEPARTMENT_ID INT,
+	DEPARTMENT_NAME VARCHAR(50)
+);
+
+// 3. Second Department Table
+create table SecondDepartment (
+	EMPID INT,
+	DEPARTMENT_NAME VARCHAR(50)
+);
+
+// 4. Address Table
+create table Address (
+	ID INT,
+	FIRST_NAME VARCHAR(50),
+	LAST_NAME VARCHAR(50),
+	ADDRESSTYPE VARCHAR(50),
+	STREET VARCHAR(50),
+	REGION VARCHAR(50),
+	COUNTRY VARCHAR(50),
+	POSTALCODE VARCHAR(50)
+);
+
+// 5. Ordert Table
+create table Ordert (
+	ORDER_ID INT,
+	C_ID INT,
+	P_ID INT,
+	QUANTITY INT,
+	S_ID INT,
+	STATUS VARCHAR(50)
+);
+
+// 6. Product Table
+create table Product (
+	P_ID INT,
+	P_NAME VARCHAR(50),
+	PRICE INT
+);
+
+// 7. Sale Table
+create table Sale (
+	C_ID INT,
+	S_ID INT,
+	P_ID INT,
+	STATUS VARCHAR(50),
+	SP_NAME VARCHAR(50)
+);
+
+// 8. Customer Table
+create table Customer (
+	C_ID INT,
+	C_NAME VARCHAR(50)
+);
+
+###################### List of Queries with Questions ##########################
+
 // 1. Print the names of the employees who have highest no of  leaves.
 
 SELECT * FROM Employee WHERE LEAVES = (SELECT MAX(LEAVES) FROM Employee)
