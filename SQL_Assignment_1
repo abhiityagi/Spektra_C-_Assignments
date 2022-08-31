@@ -1,39 +1,104 @@
 // 1. Print the names of the employees who have highest no of  leaves.
 
+SELECT * FROM Employee WHERE LEAVES = (SELECT MAX(LEAVES) FROM Employee)
+------------------------------------------------------------------------------
 // 2. Print the names of the employees that took the second highest leaves
       get the 2nd highest no of leaves.
 
+SELECT *  From Employee 
+WHERE LEAVES=(SELECT MAX(LEAVES) 
+FROM EMPLOYEE 
+WHERE LEAVES < ( SELECT Max(LEAVES) FROM Employee))
+------------------------------------------------------------------------------
 //3. Print n th  highest salary.
 
+SELECT TOP 1 Salary FROM
+(
+SELECT DISTINCT TOP 2 Salary AS Salary FROM Employee order by Salary desc
+) AS result
+order by Salary
+------------------------------------------------------------------------------
 //4. Print Name of the employee, Department name, StartDate, EndDate - Ordered by Employee, StartDate ascending.
 
+SELECT ID, D.DEPARTMENT_NAME, E.NAME, E.STARTDATE, E.ENDDATE
+FROM Employee E INNER JOIN Department D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+ORDER BY STARTDATE ASC 
+------------------------------------------------------------------------------
 //5. Print the Employees that are assigned to more than one department.
 
+SELECT EMPLOYEE.NAME,SecondDepartment.EMPID,COUNT(SecondDepartment.EMPID) AS TOTAL_DEPARTMENT
+FROM Employee
+INNER JOIN SecondDepartment
+ON ID = SecondDepartment.EMPID
+GROUP BY SecondDepartment.EMPID,Employee.NAME
+HAVING COUNT(*) > 1
+----------------------------------------------------------------------------------
 //6. Print the number of employees that are not assigned to any deparment.
 
+SELECT COUNT(*) AS NO_DEPARTMENT FROM Employee WHERE DEPartment_ID=0
+-----------------------------------------------------------------------------------
 //7. Print the number of employees by their shift [Number of employees working day, evening, and night ]
 
+SELECT SHIFTS, COUNT(*) AS EMPLOYEES
+FROM Employee
+GROUP BY SHIFTS
+------------------------------------------------------------------------------------
 //8. Print Number of Emplyoees  by CountryRegionName.
 
+SELECT countryregion,COUNT(*) AS countryregioncount
+FROM EMPLOYEE
+GROUP BY COUNTRYREGION
+ORDER BY  countryregioncount
+-------------------------------------------------------------------------------------
 //9. Print the name of the CoutryRegion with the highest number of employees. 
 
+SELECT TOP(1) countryregion,COUNT(*) AS countryregioncount
+FROM EMPLOYEE
+GROUP BY COUNTRYREGION
+ORDER BY  countryregioncount DESC
+-------------------------------------------------------------------------------------
 //10. Print the employee with their Home address detail
 	First Name, Last name, AddressType = Home, Line1, Line2, City, State ( I want the name of the state here ), Postal Code and Country.
 
+SELECT FIRST_NAME,LAST_NAME ,CONCAT(STREET  , '-', REGION , '-' ,POSTALCODE , '-' ,COUNTRY ) 
+AS ADDRESSTYPE 
+FROM ADDRESS
+---------------------------------------------------------------------------------------
 //11. Print the number of employees that don't have shipping address.
 
+SELECT * FROM ADDRESS WHERE ADDRESSTYPE NOT IN ('WORK+SHIPPING')
+---------------------------------------------------------------------------------------
 //12. Print the number of employees that have Home + Billing addresses.
 
+SELECT * FROM ADDRESS WHERE ADDRESSTYPE IN ('HOME+BILLING')
+--------------------------------------------------------------------------------------
 //13. Print the count of employees that are living in Texas state.
 
+SELECT REGION, COUNT(REGION) 
+AS TOTALEMPLOYEE 
+FROM ADDRESS WHERE REGION ='TEXAS' GROUP BY REGION  
+---------------------------------------------------------------------------------------
 //14.  Get the customers and their Sale value ( total due ).
 
+SELECT C.C_ID,C.C_NAME,P.P_ID,P.P_NAME,P.PRICE,O.QUANTITY,P.PRICE*O.QUANTITY 
+AS TOTALSALE 
+FROM CUSTOMER C INNER JOIN ORDERT O 
+ON C.C_ID=O.C_ID INNER JOIN PRODUCT P ON O.P_ID=P.P_ID
+----------------------------------------------------------------------------------------
 //15.  Get the names of the salespersons that did the highest sale.
 
+SELECT TOP(1) S.SP_NAME, COUNT(O.S_ID) AS HIGHESTSALE from sale S INNER JOIN 
+ORDERT O ON S.S_ID=O.S_ID
+GROUP BY O.S_ID,S.SP_NAME  ORDER BY HIGHESTSALE DESC
+----------------------------------------------------------------------------------------
 //16.  Number of sales by Online vs non-online.
 
+SELECT STATUS , COUNT(STATUS) AS COMPARISON FROM sale  GROUP BY STATUS
+---------------------------------------------------------------------------------------
 //17.  Number of sales by their status.
 
+SELECT STATUS,COUNT(STATUS) AS UPDATES FROM ORDERT GROUP BY STATUS
+--------------------------------------------------------------------------------------
 //18.  Print the number of customers by Product.
 
 //19.  Print the most popular product.
