@@ -101,6 +101,20 @@ SELECT STATUS,COUNT(STATUS) AS UPDATES FROM ORDERT GROUP BY STATUS
 --------------------------------------------------------------------------------------
 //18.  Print the number of customers by Product.
 
+SELECT O.P_ID ,P.P_NAME, COUNT(O.P_ID) AS CUSTOMERS 
+FROM ORDERT O INNER JOIN PRODUCT P ON O.P_ID=P.P_ID 
+GROUP BY O.P_ID,P.P_NAME ORDER BY CUSTOMERS DESC
+---------------------------------------------------------------------------------------
 //19.  Print the most popular product.
 
+SELECT TOP(1) O.P_ID ,P.P_NAME AS POPULARPRODUCT, COUNT(O.P_ID) 
+AS CUSTOMERS FROM ORDERT O INNER JOIN PRODUCT P ON O.P_ID=P.P_ID 
+GROUP BY O.P_ID,P.P_NAME
+---------------------------------------------------------------------------------------
 //20.  Print the products by their revenue.
+
+SELECT T.P_NAME,SUM(O.QUANTITY*T.PRICE) AS REVENUE 
+FROM ORDERT O INNER JOIN PRODUCT T ON O.P_ID=T.P_ID 
+GROUP BY T.P_NAME
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
