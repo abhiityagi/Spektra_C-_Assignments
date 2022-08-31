@@ -1,1 +1,41 @@
+// 1. Print the names of the employees who have highest no of  leaves.
 
+// 2. Print the names of the employees that took the second highest leaves
+      get the 2nd highest no of leaves.
+
+//3. Print n th  highest salary.
+
+//4. Print Name of the employee, Department name, StartDate, EndDate - Ordered by Employee, StartDate ascending.
+
+//5. Print the Employees that are assigned to more than one department.
+
+//6. Print the number of employees that are not assigned to any deparment.
+
+//7. Print the number of employees by their shift [Number of employees working day, evening, and night ]
+
+//8. Print Number of Emplyoees  by CountryRegionName.
+
+//9. Print the name of the CoutryRegion with the highest number of employees. 
+
+//10. Print the employee with their Home address detail
+	First Name, Last name, AddressType = Home, Line1, Line2, City, State ( I want the name of the state here ), Postal Code and Country.
+
+//11. Print the number of employees that don't have shipping address.
+
+//12. Print the number of employees that have Home + Billing addresses.
+
+//13. Print the count of employees that are living in Texas state.
+
+//14.  Get the customers and their Sale value ( total due ).
+
+//15.  Get the names of the salespersons that did the highest sale.
+
+//16.  Number of sales by Online vs non-online.
+
+//17.  Number of sales by their status.
+
+//18.  Print the number of customers by Product.
+
+//19.  Print the most popular product.
+
+//20.  Print the products by their revenue.
